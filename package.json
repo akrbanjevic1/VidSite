@@ -1,0 +1,25 @@
+{
+  "name": "vidsite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akrbanjevic1/VidSite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akrbanjevic1/VidSite/issues"
+  },
+  "homepage": "https://github.com/akrbanjevic1/VidSite#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.4.3",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2"
+  }
+}
