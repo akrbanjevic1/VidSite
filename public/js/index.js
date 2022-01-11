@@ -1,7 +1,7 @@
 //console.log("Hello world!"); //This line is for testing if it is writing to the console :)
 //From here, find a way to grab the user and pass from the index page and add to a DB. 
 
-//Start implementing the application using ejs (1/2/22)
+//You are getting the email and pass in your express route. Probs should be uploading to MongoDB. 
 
 "use strict"
 const bcryptjs = require("bcryptjs");

@@ -5,7 +5,7 @@
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
         <meta name="description" content="">
@@ -32,12 +32,12 @@
           </div>
 
         <div class="container" id="loginFormDiv">
-            <form>  
+            <form action="/login" method="post">  
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
                             <label for="inputEmail">User(Email)</label>
-                            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="email" class="form-control" name="email" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                           </div>
                     </div>
@@ -55,7 +55,7 @@
 
                 <div class="row">
                     <div class="col text-center">
-                        <button onclick="validateLogin()" type="button" class="btn btn-primary bg-info" id="submitBttn">Submit</button>
+                        <button onclick="validateLogin()" type="submit" class="btn btn-primary bg-info" id="submitBttn">Login</button>
                     </div>
                 </div>
             
