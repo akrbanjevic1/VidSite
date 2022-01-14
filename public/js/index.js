@@ -1,7 +1,8 @@
 //console.log("Hello world!"); //This line is for testing if it is writing to the console :)
 //From here, find a way to grab the user and pass from the index page and add to a DB. 
 
-//You are getting the email and pass in your express route. Probs should be uploading to MongoDB. 
+//The data is saving to MongoDB cluster Cluster0 in Atlas now. Collection is users.
+//Next step: separate registration and login pages.
 
 "use strict"
 const bcryptjs = require("bcryptjs");
