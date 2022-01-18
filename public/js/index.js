@@ -1,8 +1,8 @@
 //console.log("Hello world!"); //This line is for testing if it is writing to the console :)
 //From here, find a way to grab the user and pass from the index page and add to a DB. 
 
-//The data is saving to MongoDB cluster Cluster0 in Atlas now. Collection is users.
-//Next step: separate registration and login pages.
+//Application has ability to go to register page now. If account is not in DB, then save and register.
+//Should also make the website take the user back to the login page. 
 
 "use strict"
 const bcryptjs = require("bcryptjs");

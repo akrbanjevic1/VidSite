@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require('path');
 const app = express();
-const port = 3000;
+const port = 3100;
 const router = express.Router();
 const { MongoClient } = require('mongodb');
 var mongoose = require("mongoose");
@@ -19,6 +19,7 @@ var userSchema = new mongoose.Schema({
 
 var User = mongoose.model("User", userSchema);
 
+app.use("/", router);
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -28,7 +29,11 @@ app.use(express.static('public'));
 
 router.get('/', (req, res) => {
     mongoose.connect(uri);
-    res.sendFile(path.join(__dirname, 'public/index.html'));
+    res.sendFile('/home/akrbanj1998/Documents/Development/VidSite/public/index.html');
+});
+
+router.get('/registerPage', (req, res) => {
+    res.sendFile('/home/akrbanj1998/Documents/Development/VidSite/public/signup.html');
 });
 
 router.post('/register', (req,res) => {
@@ -41,8 +46,6 @@ router.post('/register', (req,res) => {
     res.status(400).send("unable to save to database");
     });
 });
-
-app.use("/", router);
 
 app.listen(port, () => {
     console.log('Listening at: ${port}');
