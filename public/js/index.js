@@ -1,8 +1,7 @@
 //console.log("Hello world!"); //This line is for testing if it is writing to the console :)
 //From here, find a way to grab the user and pass from the index page and add to a DB. 
 
-//Application has ability to go to register page now. If account is not in DB, then save and register.
-//Should also make the website take the user back to the login page. 
+//Find why it is not saving email and password to mongodb.
 
 "use strict"
 const bcryptjs = require("bcryptjs");
