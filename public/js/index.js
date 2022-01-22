@@ -1,7 +1,7 @@
 //console.log("Hello world!"); //This line is for testing if it is writing to the console :)
 //From here, find a way to grab the user and pass from the index page and add to a DB. 
 
-//Find why it is not saving email and password to mongodb.
+//Implement error handling for incorrect login information.
 
 "use strict"
 const bcryptjs = require("bcryptjs");

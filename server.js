@@ -7,6 +7,8 @@ const { MongoClient } = require('mongodb');
 var mongoose = require("mongoose");
 const uri = "mongodb+srv://webtest:webtest@cluster0.ihwig.mongodb.net/Cluster0?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+var mongojs = require('mongojs')
+global.db = mongojs(uri);
 
 mongoose.Promise = global.Promise;
 mongoose.connect(uri);
@@ -35,7 +37,7 @@ router.get('/registerPage', (req, res) => {
 });
 
 router.post('/register', (req,res) => {
-    console.log(req.body);
+    //console.log(req.body); used to test if body actually has anything
     var myData = new User(req.body);
     myData.save()
     .then(item => {
@@ -46,6 +48,20 @@ router.post('/register', (req,res) => {
     console.log(err);
     });
 });
+
+router.post("/login", (req, res) => {
+    var loginEmail = req.body.email;
+    User.exists({email: loginEmail}, async function (err, doc) {
+        if (err){
+            console.log(err)
+        }else{   
+            var testUser = await User.findOne({ email: loginEmail });
+            var testEmail = testUser.email;
+            console.log("Exists :", doc);
+            console.log(testEmail);
+        }
+    });
+})
 
 app.listen(port, () => {
     console.log('Listening at: ${port}');
