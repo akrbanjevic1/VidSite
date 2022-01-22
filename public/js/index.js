@@ -1,7 +1,7 @@
 //console.log("Hello world!"); //This line is for testing if it is writing to the console :)
 //From here, find a way to grab the user and pass from the index page and add to a DB. 
 
-//Implement error handling for incorrect login information.
+//Make sure login checks password and email in the "finds" request. 
 
 "use strict"
 const bcryptjs = require("bcryptjs");
@@ -59,4 +59,4 @@ function validateLogin(){
     }
 
 //Below line is only client-side; does not work in NodeJS!
-document.getElementById("submitBttn").addEventListener("click", validateLogin());
+//document.getElementById("submitBttn").addEventListener("click", validateLogin());

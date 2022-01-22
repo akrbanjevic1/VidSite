@@ -1,3 +1,4 @@
+
 const express = require("express");
 const path = require('path');
 const app = express();
@@ -20,7 +21,6 @@ var userSchema = new Schema({
 });
 
 var User = mongoose.model("User", userSchema);
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -51,16 +51,25 @@ router.post('/register', (req,res) => {
 
 router.post("/login", (req, res) => {
     var loginEmail = req.body.email;
-    User.exists({email: loginEmail}, async function (err, doc) {
-        if (err){
-            console.log(err)
-        }else{   
-            var testUser = await User.findOne({ email: loginEmail });
-            var testEmail = testUser.email;
-            console.log("Exists :", doc);
-            console.log(testEmail);
-        }
-    });
+
+    if(User.exists({email: loginEmail})) {
+        User.exists({email: loginEmail}, async function (err, doc) {
+            if (!err){
+                var testUser = await User.findOne({ email: loginEmail });
+                if(testUser === null) {
+                    res.sendFile('/home/akrbanj1998/Documents/Development/VidSite/public/index.html');
+                }
+                else {
+                    var testEmail = testUser.email;
+                    console.log("Exists :", doc);
+                    console.log(testEmail);
+                }
+            }else{  
+                alert(err); 
+            }
+        });
+    }
+
 })
 
 app.listen(port, () => {
