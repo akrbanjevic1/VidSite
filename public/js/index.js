@@ -1,7 +1,7 @@
 //console.log("Hello world!"); //This line is for testing if it is writing to the console :)
 //From here, find a way to grab the user and pass from the index page and add to a DB. 
 
-//Make sure login checks password and email in the "finds" request. 
+//Can also work on implementing alerts in this (index.js) file if info is incorrect...
 
 "use strict"
 const bcryptjs = require("bcryptjs");
@@ -34,29 +34,9 @@ const compareFunction = () => {
 };
 
 // Below function Executes on click of login button.
-function validateLogin(){
-    //console.log(attempt); //testing console.log
-    let username = document.getElementById("inputEmail").value;
-    let password = document.getElementById("inputPassword").value;
-        if (username === "test@email.com" && password === "test"){
-            alert("Login Successful!");
-            window.location = "success.html"; // Redirecting to other page.
-            return false;
-            }
-        else{
-            // Decrementing by one.
-            alert("Incorrect Login: Attempts left: "+parseInt(attempt));
-            alert(attempt);
-            //console.log(attempt);
-            // Disabling fields after 3 attempts.
-        if(attempt === 0){
-            document.getElementById("inputEmail").disabled = true;
-            document.getElementById("inputPassword").disabled = true;
-            document.getElementById("submitBttn").disabled = true;
-            return false;
-            }
-        }
-    }
+function alertLogin(){
+
+}
 
 //Below line is only client-side; does not work in NodeJS!
-//document.getElementById("submitBttn").addEventListener("click", validateLogin());
+//document.getElementById("submitBttn").addEventListener("click", alertLogin());

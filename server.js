@@ -51,23 +51,37 @@ router.post('/register', (req,res) => {
 
 router.post("/login", (req, res) => {
     var loginEmail = req.body.email;
+    var loginPass = req.body.password;
 
     if(User.exists({email: loginEmail})) {
         User.exists({email: loginEmail}, async function (err, doc) {
             if (!err){
                 var testUser = await User.findOne({ email: loginEmail });
                 if(testUser === null) {
+                    console.log("Error: account does not exist. Please register first!");
                     res.sendFile('/home/akrbanj1998/Documents/Development/VidSite/public/index.html');
                 }
-                else {
+                else{
                     var testEmail = testUser.email;
-                    console.log("Exists :", doc);
-                    console.log(testEmail);
+
+                    if(loginEmail === testUser.email && loginPass === testUser.password) {
+                        console.log("Exists :", doc);
+                        console.log(testEmail);
+                        console.log(testUser.password);
+                    }
+                    else {
+                        console.log("Incorrect login!");
+                    }
                 }
-            }else{  
-                alert(err); 
+            }else{
+                console.log("Fatal system error has occurred :( Please try again!")  
+                //alert(err); 
             }
         });
+    }
+
+    else {
+        console.log("Error with login, perhaps account does not exist?");
     }
 
 })
