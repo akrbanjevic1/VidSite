@@ -1,7 +1,8 @@
-//console.log("Hello world!"); //This line is for testing if it is writing to the console :)
-//From here, find a way to grab the user and pass from the index page and add to a DB. 
-
 //Can also work on implementing alerts in this (index.js) file if info is incorrect...
+//Login and signing up redirecting now work. Might be able to work on implementing basics
+//of pulling up videos. 
+//OR 
+//Encrypting login information before going ahead.
 
 "use strict"
 const bcryptjs = require("bcryptjs");
@@ -39,4 +40,4 @@ function alertLogin(){
 }
 
 //Below line is only client-side; does not work in NodeJS!
-//document.getElementById("submitBttn").addEventListener("click", alertLogin());
+document.getElementById("submitBttn").addEventListener("click", alertLogin());

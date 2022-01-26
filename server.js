@@ -41,7 +41,8 @@ router.post('/register', (req,res) => {
     var myData = new User(req.body);
     myData.save()
     .then(item => {
-    res.send("item saved to database!"+item);
+    //res.send("item saved to database!"+item);
+    res.sendFile("/home/akrbanj1998/Documents/Development/VidSite/public/signupSuccess.html");
     })
     .catch(err => {
     res.send(err);
