@@ -1,5 +1,6 @@
 
 const express = require("express");
+const bcryptjs = require("bcryptjs");
 const path = require('path');
 const app = express();
 const port = 3100;
@@ -15,9 +16,29 @@ mongoose.Promise = global.Promise;
 mongoose.connect(uri);
 var Schema = mongoose.Schema;
 
+//BCrypt stuff
+const saltRounds = 10;
+
+const hashFunction = (myPlainTextPassword) => {
+    bcryptjs.genSalt(saltRounds, function(err, salt) {
+        bcryptjs.hash(myPlainTextPassword, salt, function(err, hash) {
+            // Store hash in your password DB.
+            return hash;
+        });
+    })
+};
+
+const compareFunction = (myPlainTextPassword) => {
+    bcryptjs.compare(myPlainTextPassword, testHash, function(err, result) {
+        // result == 
+        console.log(result);
+    });
+};
+
+//Mongo Schema
 var userSchema = new Schema({
     email: String, //this has to be the same as the name in the HTML file!
-    password: String
+    hash: String
 });
 
 var User = mongoose.model("User", userSchema);
@@ -38,10 +59,14 @@ router.get('/registerPage', (req, res) => {
 
 router.post('/register', (req,res) => {
     //console.log(req.body); used to test if body actually has anything
-    var myData = new User(req.body);
+    var email = req.body.email;
+    var password = req.body.password;
+    var hash = bcryptjs.hashSync(password, saltRounds);
+    var myData = new User({email, hash});
     myData.save()
     .then(item => {
     //res.send("item saved to database!"+item);
+    console.log(hash);
     res.sendFile("/home/akrbanj1998/Documents/Development/VidSite/public/signupSuccess.html");
     })
     .catch(err => {
@@ -53,6 +78,7 @@ router.post('/register', (req,res) => {
 router.post("/login", (req, res) => {
     var loginEmail = req.body.email;
     var loginPass = req.body.password;
+    
 
     if(User.exists({email: loginEmail})) {
         User.exists({email: loginEmail}, async function (err, doc) {
@@ -64,13 +90,17 @@ router.post("/login", (req, res) => {
                 }
                 else{
                     var testEmail = testUser.email;
-
-                    if(loginEmail === testUser.email && loginPass === testUser.password) {
+                    var testUserHash = testUser.hash;
+                    var hash = bcryptjs.hashSync(loginPass, saltRounds);
+                    var hashResult = bcryptjs.compareSync(loginPass, testUserHash);
+                    if(loginEmail === testUser.email && hashResult === true) {
                         console.log("Exists :", doc);
                         console.log(testEmail);
-                        console.log(testUser.password);
+                        
                     }
                     else {
+                        console.log("TestUserHash"+testUserHash);
+                        console.log("Hash"+hash);
                         console.log("Incorrect login!");
                     }
                 }
