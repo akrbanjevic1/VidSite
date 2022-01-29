@@ -96,7 +96,7 @@ router.post("/login", (req, res) => {
                     if(loginEmail === testUser.email && hashResult === true) {
                         console.log("Exists :", doc);
                         console.log(testEmail);
-                        
+                        res.sendFile('/home/akrbanj1998/Documents/Development/VidSite/public/mainPage.html');
                     }
                     else {
                         console.log("TestUserHash"+testUserHash);
