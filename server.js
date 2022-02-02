@@ -66,7 +66,7 @@ router.post('/register', (req,res) => {
     .then(item => {
     //res.send("item saved to database!"+item);
     console.log(hash);
-    res.sendFile(__dirname + "/public/signupSuccess.html");
+    res.sendFile(__dirname + '/public/signupSuccess.html');
     })
     .catch(err => {
     res.send(err);
