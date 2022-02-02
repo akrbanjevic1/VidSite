@@ -3,7 +3,6 @@ const express = require("express");
 const bcryptjs = require("bcryptjs");
 const path = require('path');
 const app = express();
-const port = 3100;
 const router = express.Router();
 const { MongoClient } = require('mongodb');
 var mongoose = require("mongoose");
@@ -116,6 +115,11 @@ router.post("/login", (req, res) => {
     }
 
 })
+
+let port = process.env.PORT;
+if(port == null || port =="") {
+    port=3100;
+}
 
 app.listen(port, () => {
     console.log('Listening at: ${port}');
