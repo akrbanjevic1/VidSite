@@ -1,1 +1,2 @@
-web: node server.js
+web: echo "failed"
+service: node server.js
