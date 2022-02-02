@@ -53,7 +53,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/registerPage', (req, res) => {
-    res.sendFile('/home/akrbanj1998/Documents/Development/VidSite/public/signup.html');
+    res.sendFile(__dirname + '/public/signup.html');
 });
 
 router.post('/register', (req,res) => {
