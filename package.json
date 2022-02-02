@@ -12,6 +12,9 @@
   },
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "16.13.1"
+  },
   "bugs": {
     "url": "https://github.com/akrbanjevic1/VidSite/issues"
   },
