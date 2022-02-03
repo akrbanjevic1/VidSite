@@ -85,7 +85,7 @@ router.post("/login", (req, res) => {
                 var testUser = await User.findOne({ email: loginEmail });
                 if(testUser === null) {
                     console.log("Error: account does not exist. Please register first!");
-                    res.sendFile('/home/akrbanj1998/Documents/Development/VidSite/public/index.html');
+                    res.sendFile(__dirname+'/public/loginFailure.html');
                 }
                 else{
                     var testEmail = testUser.email;
